@@ -1,5 +1,6 @@
 package com.icode.server;
 
+import com.icode.server.handler.FirstServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -49,8 +50,8 @@ public class NettyServer {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
-                        //通过chanel的attr获取到设置的属性值
-                        System.out.println(ch.attr(clientKey).get());
+                        //添加每条连接的处理逻辑
+                        ch.pipeline().addLast(new FirstServerHandler());
                     }
                 });
 
