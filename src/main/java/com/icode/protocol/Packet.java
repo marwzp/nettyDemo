@@ -1,4 +1,4 @@
-package com.icode.protocol.command;
+package com.icode.protocol;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;

@@ -1,5 +1,6 @@
 package com.icode.client;
 
+import com.icode.client.handler.ClientHandler;
 import com.icode.client.handler.FirstClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
@@ -46,7 +47,9 @@ public class NettyClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new FirstClientHandler());
+                        //ch.pipeline().addLast(new FirstClientHandler());
+                        //将handler加到处理链中
+                        ch.pipeline().addLast(new ClientHandler());
                     }
                 });
 
